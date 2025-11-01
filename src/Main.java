@@ -1,10 +1,15 @@
+import LibraryFunctions.LibraryDao;
+
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         System.out.println("***************************************");
         System.out.println("Welcome to the Library Management System");
         System.out.println("***************************************");
 
-        while(true){
+        while (true) {
             System.out.println("Select an option");
             System.out.println("1. Add Book");
             System.out.println("2. Remove Book");
@@ -13,6 +18,23 @@ public class Main {
             System.out.println("5. Update Book Details");
             System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1 -> LibraryDao.addBook();
+                case 2 -> LibraryDao.removeBook();
+                case 3 -> LibraryDao.searchBook();
+                case 4 -> LibraryDao.listAllBooks();
+                case 5 -> LibraryDao.updateBookDetails();
+                case 6 -> {
+                    System.out.println("Exiting the system. Goodbye!");
+                    sc.close();
+                    System.exit(0);
+                }
+                default -> {
+                    System.out.println("Invalid choice. Please try again.");
+                }
+            }
         }
     }
 
