@@ -1,9 +1,12 @@
 import LibraryFunctions.LibraryDao;
+import bookObj.Book;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        LibraryDao library = new LibraryDao();
         Scanner sc = new Scanner(System.in);
         System.out.println("***************************************");
         System.out.println("Welcome to the Library Management System");
@@ -21,7 +24,7 @@ public class Main {
             int choice = sc.nextInt();
 
             switch (choice) {
-                case 1 -> LibraryDao.addBook();
+                case 1 -> library.addBook(sc);
                 case 2 -> LibraryDao.removeBook();
                 case 3 -> LibraryDao.searchBook();
                 case 4 -> LibraryDao.listAllBooks();
