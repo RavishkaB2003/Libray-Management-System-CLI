@@ -28,7 +28,7 @@ public class Main {
                 case 2 -> library.removeBook(sc);
                 case 3 -> library.searchBook(sc);
                 case 4 -> library.listAllBooks();
-                case 5 -> library.updateBookDetails();
+                case 5 -> library.updateBookDetails(sc);
                 case 6 -> {
                     System.out.println("Exiting the system. Goodbye!");
                     sc.close();
