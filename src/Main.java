@@ -22,6 +22,7 @@ public class Main {
             System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
+            sc.nextLine(); // Consume newline
 
             switch (choice) {
                 case 1 -> library.addBook(sc);

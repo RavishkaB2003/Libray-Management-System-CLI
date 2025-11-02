@@ -3,6 +3,7 @@ package LibraryFunctions;
 import bookObj.Book;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -12,13 +13,13 @@ public class LibraryDao {
     public void addBook(Scanner sc){
         //Implementation for adding a book
         System.out.println("Enter Book Title: ");
-        String title = sc.next();
+        String title = sc.nextLine();
         System.out.println("Enter Book Author: ");
-        String author = sc.next();
+        String author = sc.nextLine();
         System.out.println("Enter Book ISBN: ");
-        String isbn = sc.next();
+        String isbn = sc.nextLine();
         System.out.println("Enter Book Genre: ");
-        String genre = sc.next();
+        String genre = sc.nextLine();
         Book newBook = new Book(title, author, isbn, genre);
         books.add(newBook);
         System.out.println("Book added successfully!");
@@ -28,14 +29,16 @@ public class LibraryDao {
     public void removeBook(Scanner sc){
         System.out.println("Enter ISBN of the book to remove:");
         String isbntoremove =sc.nextLine();
-        for(Book book: books){
+        Iterator<Book> bookIterator = books.iterator(); //Using iterator to avoid ConcurrentModificationException
+        while(bookIterator.hasNext()){
+            Book book = bookIterator.next();
             if(book.getIsbn().equals(isbntoremove)){
-                books.remove(book);
+                bookIterator.remove();
                 System.out.println("Book removed successfully!");
                 return;
             }
-            System.out.println("Book with given ISBN not found.");
         }
+        System.out.println("Book with given ISBN not found.");
         //Implementation for removing a book
     }
 
@@ -44,11 +47,12 @@ public class LibraryDao {
         String query = sc.nextLine();
         for(Book book: books){
             if(Objects.equals(book.getIsbn(), query) || Objects.equals(book.getTitle(), query)){ //Used Objects.equals since methods are String and not boolean
-                System.out.println("Book Found: " + book.getTitle() + " by " + book.getAuthor());
+                System.out.println("Book Found: " + book.getTitle() + " by " + book.getAuthor() + ", ISBN: " + book.getIsbn() + ", Genre: " + book.getGenre());
                 return;
             }
-            System.out.println("Book not found.");
+
         }
+        System.out.println("Book not found.");
 
         //Implementation for searching a book by title or ISBN
     }
