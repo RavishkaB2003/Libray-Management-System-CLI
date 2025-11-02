@@ -25,10 +25,10 @@ public class Main {
 
             switch (choice) {
                 case 1 -> library.addBook(sc);
-                case 2 -> LibraryDao.removeBook();
-                case 3 -> LibraryDao.searchBook();
-                case 4 -> LibraryDao.listAllBooks();
-                case 5 -> LibraryDao.updateBookDetails();
+                case 2 -> library.removeBook(sc);
+                case 3 -> library.searchBook(sc);
+                case 4 -> library.listAllBooks();
+                case 5 -> library.updateBookDetails();
                 case 6 -> {
                     System.out.println("Exiting the system. Goodbye!");
                     sc.close();
