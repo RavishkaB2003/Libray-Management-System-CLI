@@ -54,6 +54,15 @@ public class LibraryDao {
     }
 
     public void listAllBooks(){
+        System.out.println("Listing all books in the library:");
+        for(Book book: books){
+            System.out.println("---------------------------");
+            System.out.println("Title:" + book.getTitle());
+            System.out.println("Author:" + book.getAuthor());
+            System.out.println("Isbn:" + book.getIsbn());
+            System.out.println("Genre:" + book.getGenre());
+            System.out.println("---------------------------");
+        }
         //Implementation for listing all books
     }
 
